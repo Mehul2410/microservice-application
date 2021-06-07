@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
+// AN interface that describes the properties that are required to create a user
+interface UserAttrs {
+  email: string;
+  password: string;
+}
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -13,9 +19,8 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-new User({
-  email: "test@test.com",
-  password: "admdmsmci",
-});
+const buildUser = (attrs: UserAttrs) => {
+  return new User(attrs);
+};
 
-export { User };
+export { User, buildUser };
