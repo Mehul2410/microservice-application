@@ -5,10 +5,12 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: app:auth-mongo
+    matchLabels:
+      app: auth-mongo
   template:
     metadata:
-      labels: app:auth-mongo
+      labels:
+        app: auth-mongo
     spec:
       containers:
         - name: auth-mongo
@@ -25,4 +27,4 @@ spec:
     - name: db
       protocol: TCP
       port: 27017
-      target: 27017
+      targetPort: 27017
